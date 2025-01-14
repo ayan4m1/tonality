@@ -1,18 +1,18 @@
 import { Helmet } from 'react-helmet';
+import { Button } from 'react-bootstrap';
 import { Fragment, useCallback, useEffect } from 'react';
 
-import CustomErrorBoundary from 'components/ErrorBoundary';
-import useMidiDevice from 'hooks/useMidiDevice';
-import useSynthesizer from 'hooks/useSynthesizer';
-import { Button } from 'react-bootstrap';
+import CustomErrorBoundary from '../components/ErrorBoundary';
+import useMidiDevice from '../hooks/useMidiDevice';
+import useSynthesizer from '../hooks/useSynthesizer';
 
 export const ErrorBoundary = CustomErrorBoundary;
 
-export function Component() {
+export default function IndexPage() {
   const { context } = useMidiDevice();
   const { initialize, startNote, stopNote } = useSynthesizer();
   const handleMidiMessage = useCallback(
-    (event) => {
+    (event: MIDIMessageEvent) => {
       const [action, note, velocity] = event.data;
 
       switch (action) {

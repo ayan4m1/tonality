@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
-import { noteToFreq } from 'utils';
+
+import { noteToFreq } from '../utils';
 
 export default function useSynthesizer() {
   const [audioContext, setAudioContext] = useState(null);

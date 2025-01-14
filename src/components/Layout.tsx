@@ -1,12 +1,11 @@
 import { Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { Link, Outlet } from 'react-router-dom';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { faMusic } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default function Layout({ children }) {
+export default function Layout({ children = [] }) {
   return (
     <Fragment>
       <Helmet titleTemplate="Tonality - %s" />
@@ -30,7 +29,3 @@ export default function Layout({ children }) {
     </Fragment>
   );
 }
-
-Layout.propTypes = {
-  children: PropTypes.node
-};

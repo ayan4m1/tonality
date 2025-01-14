@@ -9,7 +9,11 @@ export default function useMidiDevice() {
     }
 
     async function connectToKeyboard() {
-      setContext(await window.navigator.requestMIDIAccess());
+      try {
+        setContext(await window.navigator.requestMIDIAccess());
+      } catch (error) {
+        console.error(error);
+      }
     }
 
     connectToKeyboard();

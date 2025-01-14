@@ -1,6 +1,10 @@
 import { Container } from 'react-bootstrap';
 import { isRouteErrorResponse, useRouteError } from 'react-router';
 
+type MessageError = {
+  message: string;
+};
+
 export default function ErrorBoundary() {
   const error = useRouteError();
 
@@ -12,7 +16,7 @@ export default function ErrorBoundary() {
           {error.status} {error.statusText}
         </h1>
       ) : (
-        <h1>{error.message || error}</h1>
+        <h1>{(error as MessageError).message ?? error?.toString?.()}</h1>
       )}
     </Container>
   );
